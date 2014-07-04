@@ -1,0 +1,77 @@
+Week 5 - R Assignment
+========================================================
+
+Question 1
+--------------------
+
+It is best to create a list (vector, or dataframe) as long as the maximum expected length and adding items through the indices, as it is computationally slower to keep appending to the list (vector, or dataframe).
+It is probably ok to append items to the data structure if it is small and you aren't appending too many items. However, for large data structures it is more efficient to pre-allocate.
+
+```{r}
+#Pre-allocating
+
+n <- 20
+
+#Pre-allocating a vector
+pavect <- vector(mode = "numeric",length = n) #Create a vector with 20 elements
+pavect
+pavect[1] = 4 #Populate the first element of the vector
+pavect
+
+#Pre-allocating a data frme
+padfrm <- data.frame(Name = character(n), Age = numeric(n)) #Create a data frame with 20 rows and 2 columns
+padfrm
+
+#Pre-allocating a list
+palist <- vector(mode="list", length = n) #Create a list with 20 elements
+palist
+palist[1] = "Some text" #Populate the first element of the list
+palist
+
+
+#Appending
+
+#Appending to a vector
+q1vect5 <- c("d","e","f") #Create a vector
+q1vect5
+q1vect5 <- c(q1vect5,"g") #Append to the vector
+q1vect5
+class(q1vect5) #Show that the type is still the same
+
+#Appending to a data frame
+q1vect1 <- c("John Smith","Bob Benson","Tina Rice") #Vector for dataframe
+q1vect2 <- c(33,55,88) #Vector for dataframe
+q1dataf <- data.frame(Name = q1vect1, Age = q1vect2) #Dataframe with 2 vectors
+q1dataf
+newrow <- data.frame(Name = "Todd McLean",Age = 64)
+newrow
+q1dataf <- rbind(q1dataf,newrow) #Append the newrow dataframe
+q1dataf
+class(q1dataf) #Show that the type is still the same
+
+#Appending to a list
+q1lst <- list(4, "fore", 2, "too", 8, "ate") #Create List
+q1lst
+q1lst <- c(q1lst,9,"nein")
+q1lst
+class(q1lst) #Show that the type is still the same
+```
+
+
+Question 2
+--------------------
+
+```{r}
+# Install the MASS package and check the checkbox in the Package viewer in RStudio
+# Load Boston dataset
+data(Boston, package="MASS")
+Boston
+
+# Assign the rm, age, tax & ptratio columns to a new data frame called NewBoston
+NewBoston <- Boston[,c("rm","age","tax","ptratio")]
+head(NewBoston) # Show the top of the new data frame
+# Change the column names
+colnames(NewBoston) <- c("AvgRooms","Before1940","PropTax","PupilTeachRatio")
+head(NewBoston) # Show the top of the new data frame with the new names
+class(NewBoston) # Show that NewBoston is a data frame
+```
