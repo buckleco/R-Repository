@@ -1,0 +1,123 @@
+Week 8 - R Quiz
+========================================================
+
+Question 1
+--------------------
+
+
+```r
+#Create a variable n assigned the integer 5
+n <- 5
+#Create 2 empty vectors of size n
+vector1 <- vector(mode="numeric",length=n)
+vector2 <- vector(mode="numeric",length=n)
+#Create a for loop from 1 to n, adding each incremental integer to both vectors
+  for (i in 1:n)
+  {
+    vector1[i] <- i
+    vector2[i] <- i
+  }
+#Print the newly populated vectors
+vector1
+```
+
+```
+## [1] 1 2 3 4 5
+```
+
+```r
+vector2
+```
+
+```
+## [1] 1 2 3 4 5
+```
+
+```r
+#Using the vector addition method perferred in R these numeric vectors could have been created more neatly using the following code. Also, if n was large in the above code (say 50,000), it would run more slowly than the below code.
+
+#Create 2 vectors each with 1 to n integer elements
+vector3 <- c(1:n)
+vector4 <- c(1:n)
+#Print the 2 vectors
+vector3
+```
+
+```
+## [1] 1 2 3 4 5
+```
+
+```r
+vector4
+```
+
+```
+## [1] 1 2 3 4 5
+```
+
+
+Question 2
+--------------------
+
+
+```r
+#Create a vector
+coinflips <- c("heads", "heads", "heads", "heads", "tails")
+#Other vector scenarios for testing
+#coinflips <- c("heads", "heads", "tails", "heads", "tails")
+#coinflips <- c("heads", "tails", "heads", "heads", "tails")
+#coinflips <- c("tails", "heads", "heads", "heads", "tails")
+#coinflips <- c("heads", "heads", "heads", "heads", "heads")
+#Assign variables
+i <- 1
+count <- 0
+#Iterate through the vector while not exceeding the length of the vector and while the current element is not "tails"
+while(i <= length(coinflips) && coinflips[i] != "tails")
+{
+  #Increment count for each consecutive "heads"
+  count <- i
+  i <- i+1
+}
+#Print result
+cat("Number of heads from the beginning: ", count)
+```
+
+```
+## Number of heads from the beginning:  4
+```
+
+Question 3
+--------------------
+
+
+```r
+#create variables
+z <- 1234
+oddsum <- 0
+#Create a for loop from 1 to z
+  for (i in 1:z)
+  {
+    #True if i is odd
+    ifelse(i %% 2, oddsum <-oddsum+i, oddsum)
+  }
+#Print the final value of oddsum
+oddsum
+```
+
+```
+## [1] 380689
+```
+
+```r
+#BONUS question attempt
+#Create a vector of numbers from 1 to 100
+oddvector <- c(1:z)
+#Add up the vector elements where the value is an odd number
+vvvoddsum <- sum(which(oddvector %% 2 == 1))
+#Print out the result
+vvvoddsum
+```
+
+```
+## [1] 380689
+```
